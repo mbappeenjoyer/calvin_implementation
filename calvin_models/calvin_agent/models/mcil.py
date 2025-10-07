@@ -187,9 +187,10 @@ class MCIL(pl.LightningModule, CalvinBaseModel):
         # gripper action
         gripper_discrete_pp = sample_act_pp[..., -1]
         gt_gripper_act = actions[..., -1]
-        m = gripper_discrete_pp > 0
-        gripper_discrete_pp[m] = 1
-        gripper_discrete_pp[~m] = -1
+        m1 = gripper_discrete_pp > 0
+        gripper_discrete_pp[m1] = 1
+        gripper_discrete_pp[~m1] = -1
+        del m1
         gripper_sr_pp = torch.mean((gt_gripper_act == gripper_discrete_pp).float())
 
         # ------------Plan Recognition------------ #
@@ -206,9 +207,10 @@ class MCIL(pl.LightningModule, CalvinBaseModel):
         kl_loss = self.compute_kl_loss(pr_dist, pp_dist)
         # gripper action
         gripper_discrete_pr = sample_act_pr[..., -1]
-        m = gripper_discrete_pr > 0
-        gripper_discrete_pr[m] = 1
-        gripper_discrete_pr[~m] = -1
+        m2 = gripper_discrete_pr > 0
+        gripper_discrete_pr[m2] = 1
+        gripper_discrete_pr[~m2] = -1
+        del m2
         gripper_sr_pr = torch.mean((gt_gripper_act == gripper_discrete_pr).float())
 
         return (

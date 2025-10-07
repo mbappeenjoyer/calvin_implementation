@@ -5,6 +5,11 @@ import os
 from pathlib import Path
 import sys
 import time
+# Fix import paths
+root = Path("/content/calvin").resolve()
+sys.path.insert(0, str(root / "calvin_models"))
+sys.path.insert(0, str(root / "calvin_env"))
+sys.path.insert(0, str(root))
 
 # This is for using the locally installed repo clone when using slurm
 from calvin_agent.models.calvin_base_model import CalvinBaseModel

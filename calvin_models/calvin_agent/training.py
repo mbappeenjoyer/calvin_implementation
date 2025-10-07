@@ -5,12 +5,26 @@ from pathlib import Path
 import sys
 from typing import List, Union
 
+import sys
+
+
+# root = Path("/content/calvin").resolve()
+# sys.path.insert(0, str(root / "calvin_models"))
+# sys.path.insert(0, str(root / "calvin_env"))
+# sys.path.insert(0, str(root))
+
+
+if '/content/calvin/calvin_env' not in sys.path:
+    sys.path.insert(0, '/content/calvin/calvin_env')
+sys.path.insert(0, str(Path('/content/calvin').resolve()))  
+
+sys.path.insert(0, Path(__file__).absolute().parents[1].as_posix())
+
 # This is for using the locally installed repo clone when using slurm
 import calvin_agent
 from lightning_lite.accelerators.cuda import num_cuda_devices
 from pytorch_lightning.strategies import DDPStrategy
 
-sys.path.insert(0, Path(__file__).absolute().parents[1].as_posix())
 import calvin_agent.models.mcil as models_m
 from calvin_agent.utils.utils import get_git_commit_hash, get_last_checkpoint, print_system_env_info
 import hydra
@@ -66,7 +80,8 @@ def train(cfg: DictConfig) -> None:
 
     # Start training
     trainer.fit(model, datamodule=datamodule, ckpt_path=chk)  # type: ignore
-
+    import wandb
+    wandb.finish()
 
 def setup_callbacks(callbacks_cfg: DictConfig) -> List[Callback]:
     """

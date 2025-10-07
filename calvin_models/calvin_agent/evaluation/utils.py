@@ -43,7 +43,11 @@ def get_default_model_and_env(train_folder, dataset_path, checkpoint, env=None, 
         rollout_cfg = OmegaConf.load(Path(__file__).parents[2] / "conf/callbacks/rollout/default.yaml")
         env = hydra.utils.instantiate(rollout_cfg.env_cfg, dataset, device, show_gui=False)
 
-    checkpoint = format_sftp_path(checkpoint)
+    if not str(checkpoint).startswith(("sftp://", "ssh://")):
+          checkpoint = Path(checkpoint)
+    else:
+        checkpoint = format_sftp_path(checkpoint)
+
     print(f"Loading model from {checkpoint}")
     # import the model class that was used for the training
     model_cls = locate(cfg.model._target_)
