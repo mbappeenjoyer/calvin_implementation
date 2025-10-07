@@ -6,7 +6,7 @@ from pathlib import Path
 import sys
 import time
 # Fix import paths
-root = Path("/content/calvin").resolve()
+root = Path("/content/calvin_implementation").resolve()
 sys.path.insert(0, str(root / "calvin_models"))
 sys.path.insert(0, str(root / "calvin_env"))
 sys.path.insert(0, str(root))

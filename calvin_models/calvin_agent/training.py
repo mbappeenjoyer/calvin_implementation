@@ -13,10 +13,9 @@ import sys
 # sys.path.insert(0, str(root / "calvin_env"))
 # sys.path.insert(0, str(root))
 
-
-if '/content/calvin/calvin_env' not in sys.path:
-    sys.path.insert(0, '/content/calvin/calvin_env')
-sys.path.insert(0, str(Path('/content/calvin').resolve()))  
+if '/content/calvin_implementation/calvin_env' not in sys.path:
+    sys.path.insert(0, '/content/calvin_implementation/calvin_env')
+sys.path.insert(0, str(Path('/content/calvin_implementation').resolve()))  
 
 sys.path.insert(0, Path(__file__).absolute().parents[1].as_posix())
 
