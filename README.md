@@ -27,8 +27,8 @@ Run the following command in a new code cell:
 ## Step 3: Environment Setup
 
 Inside the notebook, locate the **Setup** section and run all its cells sequentially in order to install dependencies.
-[!TIP]
-Restarting the session after installing some dependencies caused the session to crash entirely, so one should avoid it.
+> [!TIP]
+> Restarting the session after installing some dependencies caused the session to crash entirely, so one should avoid it.
 
 ---
 
@@ -58,11 +58,11 @@ Then run the training script:
 !python training.py   datamodule.root_data_dir=/content/calvin_implementation/dataset/calvin_debug_dataset   datamodule/datasets=vision_lang   datamodule.datasets.vision_dataset.num_workers=1   datamodule.datasets.lang_dataset.num_workers=1   datamodule.datasets.vision_dataset.batch_size=8   datamodule.datasets.lang_dataset.batch_size=8
 ```
 
-[!WARNING]  
-Adjust `num_workers` and `batch_size` based on your Colab GPU memory.  
+> [!WARNING]  
+> Adjust `num_workers` and `batch_size` based on your Colab GPU memory.  
 
-[!TIP]  
-Training logs and checkpoints are automatically saved under:
+> [!TIP]  
+> Training logs and checkpoints are automatically saved under:
 
 ```
 /content/calvin_implementation/calvin_models/runs/<timestamp>/
