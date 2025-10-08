@@ -22,14 +22,14 @@ Run the following command in a new code cell:
 ```bash
 !git clone --recurse-submodules https://github.com/mbappeenjoyer/calvin_implementation.git
 ```
-
----
+--- 
 
 ## Step 3: Environment Setup
 
 Inside the notebook, locate the **Setup** section and run all its cells sequentially in order to install dependencies.
 [!Tip]
 Restarting the session after installing some dependencies caused the session to crash entirely, so one should avoid it.
+
 ---
 
 ## Step 4: Download the Dataset (Debug Split)
