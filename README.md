@@ -55,7 +55,15 @@ Before training, move to the agent directory:
 Then run the training script:
 
 ```bash
-!python training.py   datamodule.root_data_dir=/content/calvin_implementation/dataset/calvin_debug_dataset   datamodule/datasets=vision_lang   datamodule.datasets.vision_dataset.num_workers=1   datamodule.datasets.lang_dataset.num_workers=1   datamodule.datasets.vision_dataset.batch_size=8   datamodule.datasets.lang_dataset.batch_size=8
+!python training.py \
+  datamodule.root_data_dir=/content/calvin_implementation/dataset/calvin_debug_dataset \
+  ~callbacks.rollout \
+  ~callbacks.rollout_lh \
+  datamodule/datasets=vision_lang \
+  datamodule.datasets.vision_dataset.num_workers=1 \
+  datamodule.datasets.lang_dataset.num_workers=1 \
+  datamodule.datasets.vision_dataset.batch_size=8 \
+  datamodule.datasets.lang_dataset.batch_size=8 
 ```
 
 > [!WARNING]  
